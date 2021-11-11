@@ -55,6 +55,9 @@
             const barHeight = 30;
             const widthMultiplier = 6;
             const gap = 5;
+            const titleBuffer = 20;
+            const barBuffer = 10;
+            const textCenter = 3.5;
 
             // define svg
 			const svg = d3.select("#viz")
@@ -82,7 +85,7 @@
                 .data(agriculturedata)
                 .enter()
                 .append("text")
-                    .attr("y", (d,i) => i * (barHeight + gap) + marginTop + barHeight/2 + 3.5)
+                    .attr("y", (d,i) => i * (barHeight + gap) + marginTop + barHeight/2 + textCenter)
                     .attr("x", marginLeft -10)
                     .attr("text-anchor", "end")
                     .text(function(d){return d[0];})
@@ -94,8 +97,8 @@
                 .data(agriculturedata)
                 .enter()
                 .append("text")
-                    .attr("y", (d,i) => i * (barHeight + gap) + marginTop + barHeight/2 + 3.5)
-                    .attr("x", d => d[1] * widthMultiplier + marginLeft + 10)
+                    .attr("y", (d,i) => i * (barHeight + gap) + marginTop + barHeight/2 + textCenter)
+                    .attr("x", d => d[1] * widthMultiplier + marginLeft + barBuffer)
                     .attr("text-anchor", "start")
                     .text(function(d){return d[1] + "%";})
             
@@ -106,7 +109,7 @@
                 .data(agriculturedata)
                 .enter()
                 .append("text")
-                    .attr("y", marginTop - 20)
+                    .attr("y", marginTop - titleBuffer)
                     .attr("x", marginLeft)
                     .text("Proportion of Agricultural Land in 2016")
 
